@@ -1,6 +1,7 @@
 % Algoritmus QR rozkladu - presne tak jak se nema delat :-) 
 % V praxi se vzdy vyhybame sestavovani a NASOBENI prislusnych matic 
 % H*A -> nuluje sloupce matice A - tedy Q = H_1' H_2' ... H_{m-1}'
+%pridano v GIT
 function [Q,R] = hh(A) 
 
 
