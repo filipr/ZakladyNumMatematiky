@@ -65,7 +65,6 @@ for k = 2:m
     temp = A(:,k); % k-tý sloupec matice A, který bude ortogonalizován
     % následující dva radky jsou efektivním zápisem (v MATLABu)
     %   ortogonalizace vektoru  temp  vuci již ortogonalizovaným vektorum
-    % coeficienty vypocitame najednou - mohli bychom paralelne
     coef = Q(:,1:(k-1))'*temp; % vypocet koeficientu q_i^T * a_k
     temp = temp - Q(:,1:(k-1))*coef;    % ortogonalizace vuci predchozim vektorum q_i
     R(1:k-1,k) = coef'; 
@@ -76,7 +75,7 @@ end
 
 % modifikovaný Gram-Schmidt
 function [Q, R] = mGS(A)
-m = size(A,2); % pocet sloupcu matice A
+m = size(A,2); % pocet sloupcù matice A
 
 Q = zeros(size(A));
 R = zeros(size(A,2));
