@@ -110,39 +110,4 @@ end
 
 end 
 
-% QR pomoci hh reflexi
-function [Q,R] = householder(A) 
 
-
-[m,n] = size(A);
-Q = eye(m,m);
-R = A;
-%H = eye(n,m);
-% muzeme eliminovat prvnich (m-1) sloupcu
-for i = 1:m-1
-    x = R(i:m,i); % not A :-)
-    e = zeros(m-i+1,1);
-    e(1,1)=1;
-    q = x + sign(x(1))*norm(x).*e; 
-    q = q ./ norm(q); 
-    %dimenze musí odpovidat
-    H = eye(m-i+1,m-i+1) - 2.0.*q*q'; % matice HH reflexe
-
-    HH = eye(m,m); 
-    %staci oriznuta matice o posledni radky (stejne se nasobi nulami)
-    % NESTACI matice HH reflexi mezi sebou nasobime
-    HH(i:m,i:m) = H(1:m-i+1,1:m-i+1);
-
-    Q = Q* HH';   %update
-
-    R = HH*R; %update
-    %chyba = norm(Q*R-A);
-end
-
-% nemusíme ukládat posledni radek R a posledni sloupec Q 
-if m>n  
-    R = R(1:n,1:n);
-    Q = Q(1:m,1:n);
-end
-
-end 
